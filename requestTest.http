@@ -1,0 +1,30 @@
+### Retorna todos los productos de la colección
+GET http://localhost:3000/api/products
+
+### Retorna un producto en específico
+GET http://localhost:3000/api/products/629046f75d5ccffa9d380724
+
+### Crea un nuevo producto
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Product 2",
+  "description": "Product 2 description",
+  "price": "10.00",
+  "image": "http://www.example.com/image.jpg"
+}
+
+### Actualiza un producto
+PUT http://localhost:3000/api/products/629046f75d5ccffa9d380724
+Content-Type: application/json
+
+{
+  "name": "Product 4",
+  "description": "Product 4 description",
+  "price": "30.00",
+  "image": "http://www.example.com/image.jpg"
+}
+
+### Elimina un producto
+DELETE http://localhost:3000/api/products/628ff25b6bc96ddc3f429dc2
