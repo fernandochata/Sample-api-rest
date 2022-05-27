@@ -9,9 +9,9 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "name": "Product 2",
-  "description": "Product 2 description",
-  "price": "10.00",
+  "name": "Product 4",
+  "description": "Product 4 description",
+  "price": "40.00",
   "image": "http://www.example.com/image.jpg"
 }
 
