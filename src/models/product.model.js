@@ -21,8 +21,8 @@ const productSchema = mongoose.Schema(
 {
     /**
      * * Activa dos propiedades por defecto
-     * createdAt: a date representing when this document was created
-     * updatedAt: a date representing when this document was last updated
+     * createdAt: fecha en que se creó el documento
+     * updatedAt: fecha en que se actualizó por última vez el documento
      */
     timestamps: true,
     
