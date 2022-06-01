@@ -1,9 +1,9 @@
-import fs from 'fs-extra';
-
 import Product from '../models/product.model.js';
 
-import { uploadImage, deleteImage } from '../config/cloudinary.js';
-
+/**
+ * * GET /products/
+ * Retorna todos los productos
+ */
 export const getProducts = async (req, res) => {
     try {
         const products = await Product.find();
@@ -12,8 +12,12 @@ export const getProducts = async (req, res) => {
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
-
 };
+
+/**
+ * * GET /products/:id
+ * Retorna un producto según su id
+ */
 export const getProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -23,31 +27,26 @@ export const getProduct = async (req, res) => {
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
-
 };
 
+/**
+ * * POST /products
+ * Crea un nuevo producto
+ */
 export const createProduct = async (req, res) => {
     try {
-        const newProduct = new Product(req.body);
-
-        if(req.files?.image) {
-            const result = await uploadImage(req.files.image.tempFilePath)
-            newProduct.image = {
-                public_id: result.public_id,
-                secure_url: result.secure_url
-            }
-            await fs.unlink(req.files.image.tempFilePath);
-        }
-
-        const product = await newProduct.save();
+        const product = await new Product(req.body).save();
         if(!product) return res.status(400).json({msg: 'Product not created'});
         res.json(product);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
-
 }
 
+/**
+ * * PUT /products/:id
+ * Actualiza un producto según su id
+ */
 export const updateProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndUpdate(req.params.id, req.body, {new: true});
@@ -58,14 +57,16 @@ export const updateProduct = async (req, res) => {
     }
 }
 
+/**
+ * * DELETE /products/:id
+ * Elimina un producto según su id
+ */
 export const deleteProduct = async (req, res) => {
     try {
         const product = await Product.findByIdAndRemove(req.params.id);
         if(!product) return res.status(404).json({msg: 'Product not found'});
-        if(product.image?.public_id) await deleteImage(product.image.public_id);
         res.json(product);
     } catch (error) {
         return res.status(500).json({message: error.message});
     }
-
 }
