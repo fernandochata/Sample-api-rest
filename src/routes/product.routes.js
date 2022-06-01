@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import fileUpload from 'express-fileupload'
-import { getProducts, getProduct, createProduct, updateProduct, deleteProduct } from '../controllers/product.controllers.js';
+import { getProducts, getProduct, createProduct, updateProduct, deleteProduct, deleteProducts } from '../controllers/product.controllers.js';
 
 
 const router = Router();
@@ -14,6 +14,8 @@ router.post('/', fileUpload({ useTempFiles: true, tempFileDir:'./uploads'}), cre
 router.put('/:id', updateProduct);
 
 router.delete('/:id', deleteProduct);
+
+router.delete('/', deleteProducts);
 
 
 export default router;

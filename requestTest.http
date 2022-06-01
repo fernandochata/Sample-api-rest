@@ -27,3 +27,6 @@ Content-Type: application/json
 
 ### Elimina un producto
 DELETE http://localhost:3000/api/products/62977e4fc9978c3fdd43a559
+
+### Elimina todos los productos de la colección
+DELETE http://localhost:3000/api/products/
