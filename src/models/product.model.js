@@ -7,6 +7,20 @@ const productSchema = mongoose.Schema(
         required: true,
         trim: true,
         unique: true
+    }, rut: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true,
+        minlength: 10,
+        maxlength: 10,
+        validate: {
+            validator: function (value) {
+                // return /^[0-9]{1,2}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$/.test(value);
+                return /^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( value )
+            },
+            message: '{VALUE} is not a valid rut'
+        }
     }, price: {
             type: Number,
             default: 0
@@ -16,6 +30,18 @@ const productSchema = mongoose.Schema(
     }, description: {
             type: String,
             trim: true
+    }, email: {
+            type: String,
+            trim: true,
+            required: true,
+            unique: true,
+            lowercase: true,
+            validate: {
+                validator: function(mail) {
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail);
+                },
+                message: 'Ingrese un e-mail válido'
+            }
     }
 },
 {

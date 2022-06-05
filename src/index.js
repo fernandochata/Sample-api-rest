@@ -1,13 +1,13 @@
 import app from './app.js';
 
-import {connectToDB} from './database/database.js';
+import { connectToMongoDB } from './database/databases.js';
 
 
 async function main() {
-    await connectToDB();
+    await connectToMongoDB();
     
-    app.listen(3000, () => {
-        console.log('Listening on port 3000');
+    app.listen(app.get('port'), () => {
+        console.log(`Listening on port ${app.get('port')}`);
     });
 }
   

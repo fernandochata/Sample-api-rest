@@ -2,9 +2,12 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
+import userRoutes from './routes/user.routes.js';
 import productRoutes from './routes/product.routes.js';
 
 const app = express();
+
+app.set('port', process.env.PORT || 3000);
 
 /**
  * * MIDDLEWARES
@@ -25,6 +28,7 @@ app.use(express.json());
 /**
  * * ROUTES
  */
+app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 
 export default app;

@@ -9,10 +9,13 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "name": "Product 1",
+  "name": "Product 2",
+  "description": "Product 2 description",
+  "rut": "22042308-5",
   "stock": "10",
   "price": "100000",
-  "description": "Product 1 description"
+  "description": "Product 1 description",
+  "email": "me@mail.com"
 }
 
 ### Actualiza un producto
