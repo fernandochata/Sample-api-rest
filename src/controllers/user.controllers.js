@@ -1,5 +1,19 @@
+/**
+ * * Postgres database
+ * * Conexión con BBDD: PostgreSQL
+ * @param req.body Corresponde al nuevo producto (en formato JSON)
+ * @return {Product} Producto eliminado
+ * 
+ */
+
 import { pool } from '../database/databases.js';
 
+
+/**
+ * * GET /users/
+ * Retorna todos los usuarios
+ * @returns {Array} Arreglo de todos usuarios
+ */
 export const getUsers = async (req, res) => {
     try {
         const users = await pool.query(`SELECT * FROM users ORDER BY id ASC`);
@@ -10,6 +24,12 @@ export const getUsers = async (req, res) => {
     }
 };
 
+/**
+ * * GET /users/:id
+ * Retorna un usuario según su id
+ * @param {*} req corresponde al id del usuario
+ * @returns {Array} Usuario
+ */
 export const getUser = async (req, res) => {
     try {
         const user = await pool.query(`SELECT * FROM users WHERE id = ${req.params.id}`);
@@ -20,6 +40,12 @@ export const getUser = async (req, res) => {
     }
 };
 
+/**
+ * * POST /users
+ * Crea un nuevo usuario
+ * @param {req.body} req nuevo usuario en formato JSON
+  * @returns {User} Usuario creado
+ */
 export const createUser = async (req, res) => {
     try {
         const user = await pool.query(`INSERT INTO users (name) VALUES ('${req.body.name}')`);
@@ -30,6 +56,12 @@ export const createUser = async (req, res) => {
     }
 };
 
+/**
+ * * PUT /users/:id
+ * @param {req.params.id} req id del usuario a actualizar
+ * @param {req.body} req información del usuario a actualizar	
+ * @param {String} mensaje de confirmación
+ */
 export const updateUser = async (req, res) => {
     try {
         const data = await pool.query(`UPDATE users SET name = '${req.body.name}' WHERE id = ${req.params.id}`);
@@ -40,6 +72,11 @@ export const updateUser = async (req, res) => {
     }
 }
 
+/**
+ * * DELETE /users/:id
+ * @param {req.params.id} req id de usuario a eliminar
+ * @param {String} res mensaje de confirmación
+ */
 export const deleteUser = async (req, res) => {
     try {
         const data = await pool.query(`DELETE FROM users WHERE id = ${req.params.id}`);
@@ -50,6 +87,10 @@ export const deleteUser = async (req, res) => {
     }
 }
 
+/**
+ * * DELETE /users/
+ * @param {String} res mensaje de confirmación
+ */
 export const deleteUsers = async (req, res) => {
     try {
         await pool.query(`TRUNCATE TABLE users RESTART IDENTITY`);
