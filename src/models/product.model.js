@@ -16,7 +16,6 @@ const productSchema = mongoose.Schema(
         maxlength: 10,
         validate: {
             validator: function (value) {
-                // return /^[0-9]{1,2}[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$/.test(value);
                 return /^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( value )
             },
             message: '{VALUE} is not a valid rut'

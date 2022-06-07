@@ -1,25 +1,27 @@
+### DATABASE MONGODB
+
 ### Retorna todos los productos de la colección
 GET http://localhost:3000/api/products
 
 ### Retorna un producto en específico
-GET http://localhost:3000/api/products/6297804e5922972765c3267d
+GET http://localhost:3000/api/products/629f5b6bcd120d46e7711a6d
 
 ### Crea un nuevo producto
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "name": "Product 2",
+  "name": "Product 5",
   "description": "Product 2 description",
-  "rut": "22042308-5",
+  "rut": "22541308-5",
   "stock": "10",
   "price": "100000",
   "description": "Product 1 description",
-  "email": "me@mail.com"
+  "email": "m24@mail.com"
 }
 
 ### Actualiza un producto
-PUT http://localhost:3000/api/products/629046f75d5ccffa9d380724
+PUT http://localhost:3000/api/products/629f56e65db58f9a976ad929
 Content-Type: application/json
 
 {
@@ -29,7 +31,7 @@ Content-Type: application/json
 }
 
 ### Elimina un producto
-DELETE http://localhost:3000/api/products/62977e4fc9978c3fdd43a559
+DELETE http://localhost:3000/api/products/629f5a960a5cebff0028d46
 
 ### Elimina todos los productos de la colección
 DELETE http://localhost:3000/api/products/
