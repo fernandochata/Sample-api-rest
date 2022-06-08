@@ -3,13 +3,11 @@
  */
  
 import mongoose from 'mongoose';
-
-//const MONGO_URI = 'mongodb+srv://fernando:fernando@cluster.7aaup.mongodb.net/?retryWrites=true&w=majority';
-const MONGO_URI = 'mongodb://localhost:27017/test'
+import 'dotenv/config'
 
 export async function connectToMongoDB() {
     try {
-        await mongoose.connect(MONGO_URI);
+        await mongoose.connect(process.env.MONGODB_URI);
         console.log('Connected to DB...');
     } catch (error) {
         console.error(error);
@@ -23,9 +21,9 @@ export async function connectToMongoDB() {
 import pg from 'pg';
 
 export const pool = new pg.Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'test',
-    password: 'pswd',
-    port: 5432,
+    user: process.env.DB_USER_PG,
+    host: process.env.DB_HOST_PG,
+    database: process.env.DB_DATABASE_PG,
+    password: process.env.DB_PASSWORD_PG,
+    port: process.env.DB_PORT_PG
 });

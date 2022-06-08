@@ -4,7 +4,7 @@
 GET http://localhost:3000/api/products
 
 ### Retorna un producto en específico
-GET http://localhost:3000/api/products/629f5b6bcd120d46e7711a6d
+GET http://localhost:3000/api/products/62a01d370f343eddf94758dd
 
 ### Crea un nuevo producto
 POST http://localhost:3000/api/products
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Actualiza un producto
-PUT http://localhost:3000/api/products/629f56e65db58f9a976ad929
+PUT http://localhost:3000/api/products/62a01d370f343eddf94758dd
 Content-Type: application/json
 
 {
