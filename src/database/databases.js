@@ -7,7 +7,12 @@ import 'dotenv/config'
 
 export async function connectToMongoDB() {
     try {
-        await mongoose.connect(process.env.MONGODB_URI);
+        const username = process.env.MONGODB_URI_USERNAME;
+        const password = process.env.MONGODB_URI_PASSWORD;
+        const host = process.env.MONGODB_URI_HOST;
+        const options = process.env.MONGODB_URI_OPTIONS;
+//      await mongoose.connect(process.env.MONGODB_URI);
+        await mongoose.connect(`mongodb+srv://${username}:${password}@${host}/${options}`);
         console.log('Connected to DB...');
     } catch (error) {
         console.error(error);
