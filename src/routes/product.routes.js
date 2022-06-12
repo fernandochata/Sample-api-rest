@@ -1,6 +1,6 @@
 import { Router} from 'express';
 import { getProducts, getProduct, createProduct, updateProduct, deleteProduct, deleteProducts } from '../controllers/product.controllers.js';
-
+import { validacionEmail } from '../../util/util.js';
 
 const router = Router();
 
@@ -8,7 +8,7 @@ router.get('/:id', getProduct);
 
 router.get('/', getProducts);
 
-router.post('/', createProduct);
+router.post('/', validacionEmail, createProduct);
 
 router.put('/:id', updateProduct);
 

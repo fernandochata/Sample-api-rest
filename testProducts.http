@@ -17,7 +17,7 @@ Content-Type: application/json
   "stock": "10",
   "price": "100000",
   "description": "Product 1 description",
-  "email": "m24@mail.com"
+  "email": "m24@mail"
 }
 
 ### Actualiza un producto
